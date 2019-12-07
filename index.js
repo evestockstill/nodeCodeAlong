@@ -1,3 +1,4 @@
 const colors = require('colors');
 const server = require('./server');
-server.start();
+const router = require('./router');
+server.start(router.route);

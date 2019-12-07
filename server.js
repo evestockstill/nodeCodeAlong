@@ -13,11 +13,15 @@
 
  const http = require('http');
 const PORT = 8888;
-function start() {
+const url = require('url');
+
+function start(route) {
   function onRequest(req, res) {
-    console.log('request recieved');
+    let pathname = url.parse(req.url).pathname;
+    console.log(`request for ${pathname} recieved.`.blue);
+    route(pathname);
     res.setHeader('Content-Type', 'text/plain');
-    res.write('Hello World-3');
+    res.write('Hello World-4');
     res.end(); 
   }
   http.createServer(onRequest).listen(8888);
