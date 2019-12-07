@@ -1,0 +1,26 @@
+{
+  "name": "nodeCodeAlong",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node",
+    "start:watch": "nodemon server.js",
+    "lint": "eslint **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evestockstill/nodeCodeAlong.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evestockstill/nodeCodeAlong/issues"
+  },
+  "homepage": "https://github.com/evestockstill/nodeCodeAlong#readme",
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "nodemon": "^2.0.1"
+  }
+}
