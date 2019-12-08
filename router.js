@@ -4,8 +4,7 @@ function route(handle, pathname, response) {
   return handle[pathname](response); ;
   } else {
     console.log(`no reqest handler found for ${pathname}`)
-   response.setHeader('Content-Type', 'text/plain');
-   response.writeHead(200);
+    response.writeHead(200, { 'Content-Type': 'text/plain' });
    response.end();
   }
 }

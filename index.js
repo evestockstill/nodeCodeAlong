@@ -7,5 +7,5 @@ const handle = {}
 handle['/'] = requestHandler.start;
 handle['./start'] = requestHandler.start;
 handle['./upload'] = requestHandler.upload;
-server.begin(router.route, handle);
+server.start(router.route, handle);
 

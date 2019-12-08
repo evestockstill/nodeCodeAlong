@@ -13,14 +13,13 @@ const exec = require('child_process').exec;
       '</form>' +
       '</body>' +
       '</html>';
-    response.setHeader('Content-Type', 'text/plain');
-    response.writeHead(body);
-    response.end();
+    response.writeHead(200, { 'Content-Type': 'text/html' });
+    response.write(body);
   }
 function upload(response) {
   console.log('reqest handler upload called'.red);
-  response.setHeader('Content-Type', 'text/plain');
-  response.writeHead('hello uppload?');
+  response.writeHead(200, { 'Content-Type': 'text/plain' });
+  response.write('hello uppload?');
   response.end();
 }
 exports.start = start;
