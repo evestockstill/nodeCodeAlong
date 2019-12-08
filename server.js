@@ -12,18 +12,22 @@ const http = require('http');
 const PORT = 8888;
 const url = require('url');
 
-function start(route, handle) {
-  function onRequest(req, res) {
+function begin(route, handle) {
+  const server = http.createServer(function(req, res) {
     const pathname = url.parse(req.url).pathname;
     console.log(`request for ${pathname} recieved.`.blue);
-    route(handle, pathname);
-    res.setHeader('Content-Type', 'text/plain');
-    res.write('Hello World-8');
+    res.writeHead(404, {
+      'X-Powered-By': 'Node.js',
+      'Content-Type': 'text/html'
+    });
+    const content = route(handle, pathname);
+    res.writeHead(200);
+    res.write(content)
     res.end(); 
-  };
-  http.createServer(onRequest).listen(8888);
-  console.log(`server running on port ${PORT}`.yellow.bold);
-};
-exports.start = start;
+  })
+  
+  server.listen(PORT, () => console.log(`server running on port ${PORT}`.yellow.bold));
+}
+exports.begin = begin;
 
 

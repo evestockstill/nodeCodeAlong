@@ -1,9 +1,10 @@
 function route(handle, pathname ) {
-  console.log(`trying to get route ${route}`.pink);
+  console.log(`about to routa a req for ${pathname}`.pink);
   if(typeof handle[pathname] === 'function') {
-    handle[pathname]();
+   return handle[pathname](); ;
   } else {
     console.log(`no reqest handler found for ${pathname}`)
+    return '404 Not found'
   }
 };
 exports.route = route;
