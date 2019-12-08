@@ -1,10 +1,18 @@
 function start() {
   console.log('request handler "start" was called'.cyan);
-  return 'starting page-2';
+  
+  function sleep(milliSeconds) {
+    const startTime = new Date().getTime();
+    while (new Date().getTime() < startTime + milliSeconds);
+  }
+  sleep(10000);
+  return 'hello start again';
 }
 function upload() {
   console.log('reqest handler upload called'.red);
-  return 'this the upload';
+  return 'hello upload?';
 }
 exports.upload = upload;
 exports.start = start;
+
+

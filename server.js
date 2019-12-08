@@ -7,27 +7,24 @@
 // });
 // const PORT = 8888;
 // server.listen(PORT, () => console.log(`server running on port ${PORT}`.yellow.bold));
-
+// const multer = require({ dest: './uploads/' });
 const http = require('http');
 const PORT = 8888;
 const url = require('url');
-
 function begin(route, handle) {
-  const server = http.createServer(function(req, res) {
+  function onRequest(req, res) {
     const pathname = url.parse(req.url).pathname;
     console.log(`request for ${pathname} recieved.`.blue);
-    res.writeHead(404, {
-      'X-Powered-By': 'Node.js',
-      'Content-Type': 'text/html'
-    });
-    const content = route(handle, pathname);
+    res.setHeader('Content-Type', 'text/plain');
     res.writeHead(200);
+
+    const content = route(handle, pathname);
     res.write(content)
     res.end(); 
-  })
-  
-  server.listen(PORT, () => console.log(`server running on port ${PORT}`.yellow.bold));
-}
+  }
+http.createServer(onRequest).listen(8888);
+console.log(`server running on port ${PORT}`.yellow.bold); 
+};
 exports.begin = begin;
 
 
