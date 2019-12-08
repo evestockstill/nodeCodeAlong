@@ -15,14 +15,14 @@ function begin(route, handle) {
   function onRequest(req, res) {
     const pathname = url.parse(req.url).pathname;
     console.log(`request for ${pathname} recieved.`.blue);
-    res.setHeader('Content-Type', 'text/plain');
-    res.writeHead(200);
+    route(handle, pathname, res);
+    
 
-    const content = route(handle, pathname);
-    res.write(content)
-    res.end(); 
+    // const content = route(handle, pathname);
+    // res.write(content)
+    // res.end(); 
   }
-http.createServer(onRequest).listen(8888);
+http.createServer(onRequest).listen(PORT);
 console.log(`server running on port ${PORT}`.yellow.bold); 
 };
 exports.begin = begin;
