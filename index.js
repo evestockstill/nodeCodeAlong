@@ -4,6 +4,7 @@ const router = require('./router');
 const requestHandler = require('./requestHandler');
 
 const handle = {};
+console.log('made it here'.pink)
 handle['/'] = requestHandler.start;
 handle['./start'] = requestHandler.start;
 handle['./upload'] = requestHandler.upload;

@@ -1,5 +1,5 @@
 function route(handle, pathname ) {
-  console.log(`about to route a req for ${pathname}`.pink);
+  console.log(`trying to get route ${route}`.pink);
   if(typeof handle[pathname] === 'function') {
     handle[pathname]();
   } else {
